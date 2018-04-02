@@ -30,7 +30,7 @@ public class BattleShip {
 		}
 	}
 	
-	public void printEmptyBoard(){		//Done
+	public void printPlayBoard(){		//Done
 		for(int k = 0; k < 10; k++){
 			for(int l = 0; l < 10; l++){
 				System.out.print(arr[k][l]);
@@ -429,25 +429,31 @@ public class BattleShip {
 		col = rCol.nextInt(8) + 1;
 
 		//Two Spot Ship
+		for(int j = 0; j < 20; j++){
+			if(p2Board[row][col] != ' '){
+				row = rRow.nextInt(8) + 1;
+				col = rCol.nextInt(8) + 1;
+			}
+			else{
+				break;
+			}
+		}
+		
 		p2Board[row][col] = '2';	//First Spot
 		end = endSpot.nextInt(3);
 		
 		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end
 			if(row == 9 && end == 0) {			//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else if(row == 1 && end == 1) {		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else if(col == 9 && end == 2) {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else if(col == 1 && end == 3) {		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else {
 				break;
@@ -473,25 +479,31 @@ public class BattleShip {
 		col = rCol.nextInt(8) + 1;
 		
 		//Three Spot Ship
+		for(int j = 0; j < 20; j++){
+			if(p2Board[row][col] != ' '){
+				row = rRow.nextInt(8) + 1;
+				col = rCol.nextInt(8) + 1;
+			}
+			else{
+				break;
+			}
+		}
+		
 		p2Board[row][col] = '3';	//First Spot
 		end = endSpot.nextInt(3);
 		
 		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
-			if(end == 0 && p2Board[row + 2][col] != ' ') {		//Changes end spot from end of row
+			if(end == 0 && p2Board[row + 1][col] != ' ' && p2Board[row + 2][col] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 1 && p2Board[row - 2][col] != ' ') {		//Changes end spot from front of row
+			else if(end == 1 && p2Board[row - 1][col] != ' ' && p2Board[row - 2][col] != ' ') {		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 2 && p2Board[row][col + 2] != ' ') {		//Changes end spot from end of row
+			else if(end == 2 && p2Board[row][col + 1] != ' ' && p2Board[row][col + 2] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 3 && p2Board[row][col - 2] != ' '){		//Changes end spot from front of row
+			else if(end == 3 && p2Board[row][col - 1] != ' ' && p2Board[row][col - 2] != ' '){		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else {
 				break;
@@ -520,25 +532,31 @@ public class BattleShip {
 		col = rCol.nextInt(8) + 1;
 		
 		//Four Spot Ship
+		for(int j = 0; j < 20; j++){
+			if(p2Board[row][col] != ' '){
+				row = rRow.nextInt(8) + 1;
+				col = rCol.nextInt(8) + 1;
+			}
+			else{
+				break;
+			}
+		}
+		
 		p2Board[row][col] = '4';	//First Spot
 		end = endSpot.nextInt(3);
 		
 		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
-			if(end == 0 && p2Board[row + 3][col] != ' ') {		//Changes end spot from end of row
+			if(end == 0 && p2Board[row + 1][col] != ' '  && p2Board[row + 2][col] != ' ' && p2Board[row + 3][col] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 1 && p2Board[row - 3][col] != ' ') {		//Changes end spot from front of row
+			else if(end == 1 && p2Board[row - 1][col] != ' ' && p2Board[row - 2][col] != ' ' && p2Board[row - 3][col] != ' ') {		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 2 && p2Board[row][col + 3] != ' ') {		//Changes end spot from end of row
+			else if(end == 2 && p2Board[row][col + 1] != ' ' && p2Board[row][col + 2] != ' ' && p2Board[row][col + 3] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 3 && p2Board[row][col - 3] != ' '){		//Changes end spot from front of row
+			else if(end == 3 && p2Board[row][col - 1] != ' ' && p2Board[row][col - 2] != ' ' && p2Board[row][col - 3] != ' '){		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else {
 				break;
@@ -571,25 +589,35 @@ public class BattleShip {
 		col = rCol.nextInt(8) + 1;
 		
 		//Five Spot Ship
+		for(int j = 0; j < 20; j++){
+			if(p2Board[row][col] != ' '){
+				row = rRow.nextInt(8) + 1;
+				col = rCol.nextInt(8) + 1;
+			}
+			else{
+				break;
+			}
+		}
+		
 		p2Board[row][col] = '5';	//First Spot
 		end = endSpot.nextInt(3);
 		
 		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
-			if(end == 0 && p2Board[row + 4][col] != ' ') {		//Changes end spot from end of row
+			if(end == 0 && p2Board[row + 1][col] != ' ' && p2Board[row + 2][col] != ' ' && p2Board[row + 3][col] != ' '
+					&& p2Board[row + 4][col] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 1 && p2Board[row - 4][col] != ' ') {		//Changes end spot from front of row
+			else if(end == 1 && p2Board[row - 1][col] != ' '&& p2Board[row - 2][col] != ' ' && p2Board[row - 3][col] != ' '
+					&& p2Board[row - 4][col] != ' ') {		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 2 && p2Board[row][col + 4] != ' ') {		//Changes end spot from end of row
+			else if(end == 2 && p2Board[row][col + 1] != ' ' && p2Board[row][col + 2] != ' ' && p2Board[row][col + 3] != ' '
+						&& p2Board[row][col + 4] != ' ') {		//Changes end spot from end of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
-			else if(end == 3 && p2Board[row][col - 4] != ' '){		//Changes end spot from front of row
+			else if(end == 3 && p2Board[row][col - 1] != ' ' && p2Board[row][col - 2] != ' ' && p2Board[row][col - 3] != ' '
+					 && p2Board[row][col - 4] != ' '){		//Changes end spot from front of row
 				end = endSpot.nextInt(3);
-				continue;
 			}
 			else {
 				break;
