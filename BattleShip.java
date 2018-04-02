@@ -3,8 +3,6 @@ import java.util.*;
 /* # Is ship
    X is hit
    O is miss
-   
-   Row Same && Column Increased || Row Increased && Column Same
  */
 public class BattleShip {
 	private char arr[][] = new char[12][12];
@@ -322,7 +320,7 @@ public class BattleShip {
 		printP1Board();
 	}
 	
-	public void placeFiveSpotShip(){
+	public void placeFiveSpotShip(){	//Done
 		Scanner kbReader = new Scanner(System.in);
 		
 		String place[] = new String[2];
@@ -414,5 +412,218 @@ public class BattleShip {
 			}
 		}
 		printP1Board();
+	}
+
+	public void computerPlayer(){
+		Random rCol = new Random();
+		Random rRow = new Random();
+		Random endSpot = new Random();
+		
+		int row;
+		int col;
+		int end;
+		
+		p2Board = arr;
+		
+		row = rRow.nextInt(8) + 1;
+		col = rCol.nextInt(8) + 1;
+
+		//Two Spot Ship
+		p2Board[row][col] = '2';	//First Spot
+		end = endSpot.nextInt(3);
+		
+		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end
+			if(row == 9 && end == 0) {			//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(row == 1 && end == 1) {		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(col == 9 && end == 2) {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(col == 1 && end == 3) {		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if(end == 0) {	//Increase Row
+			p2Board[row + 1][col] = '2';
+		}
+		else if(end == 1) {	//Decrease Row
+			p2Board[row - 1][col] = '2';
+		}
+		else if(end == 2) {	//Increase Column
+			p2Board[row][col + 1] = '2';
+		}
+		else if(end == 3) {	//Decrease Column
+			p2Board[row][col - 1] = '2';
+		}
+		//End Two Ship Placement ----------------------------------------------------------
+		
+		
+		row = rRow.nextInt(8) + 1;
+		col = rCol.nextInt(8) + 1;
+		
+		//Three Spot Ship
+		p2Board[row][col] = '3';	//First Spot
+		end = endSpot.nextInt(3);
+		
+		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
+			if(end == 0 && p2Board[row + 2][col] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 1 && p2Board[row - 2][col] != ' ') {		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 2 && p2Board[row][col + 2] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 3 && p2Board[row][col - 2] != ' '){		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if(end == 0) {	//Increase Row
+			p2Board[row + 1][col] = '3';
+			p2Board[row + 2][col] = '3';
+		}
+		else if(end == 1) {	//Decrease Row
+			p2Board[row - 1][col] = '3';
+			p2Board[row - 2][col] = '3';
+		}
+		else if(end == 2) {	//Increase Column
+			p2Board[row][col + 1] = '3';
+			p2Board[row][col + 2] = '3';
+		}
+		else if(end == 3) {	//Decrease Column
+			p2Board[row][col - 1] = '3';
+			p2Board[row][col - 2] = '3';
+		}
+		//End Three Ship Placement	------------------------------------------------
+		
+		row = rRow.nextInt(8) + 1;
+		col = rCol.nextInt(8) + 1;
+		
+		//Four Spot Ship
+		p2Board[row][col] = '4';	//First Spot
+		end = endSpot.nextInt(3);
+		
+		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
+			if(end == 0 && p2Board[row + 3][col] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 1 && p2Board[row - 3][col] != ' ') {		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 2 && p2Board[row][col + 3] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 3 && p2Board[row][col - 3] != ' '){		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if(end == 0) {	//Increase Row
+			p2Board[row + 1][col] = '4';
+			p2Board[row + 2][col] = '4';
+			p2Board[row + 3][col] = '4';
+		}
+		else if(end == 1) {	//Decrease Row
+			p2Board[row - 1][col] = '4';
+			p2Board[row - 2][col] = '4';
+			p2Board[row - 3][col] = '4';
+		}
+		else if(end == 2) {	//Increase Column
+			p2Board[row][col + 1] = '4';
+			p2Board[row][col + 2] = '4';
+			p2Board[row][col + 3] = '4';
+		}
+		else if(end == 3) {	//Decrease Column
+			p2Board[row][col - 1] = '4';
+			p2Board[row][col - 2] = '4';
+			p2Board[row][col - 3] = '4';
+		}
+		//End Four Ship Placement	------------------------------------------------
+		
+		row = rRow.nextInt(8) + 1;
+		col = rCol.nextInt(8) + 1;
+		
+		//Five Spot Ship
+		p2Board[row][col] = '5';	//First Spot
+		end = endSpot.nextInt(3);
+		
+		for(int i = 0; i < 20; i++) {		//Testing if first spot at beginning or end or if filled
+			if(end == 0 && p2Board[row + 4][col] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 1 && p2Board[row - 4][col] != ' ') {		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 2 && p2Board[row][col + 4] != ' ') {		//Changes end spot from end of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else if(end == 3 && p2Board[row][col - 4] != ' '){		//Changes end spot from front of row
+				end = endSpot.nextInt(3);
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if(end == 0) {	//Increase Row
+			p2Board[row + 1][col] = '5';
+			p2Board[row + 2][col] = '5';
+			p2Board[row + 3][col] = '5';
+			p2Board[row + 4][col] = '5';
+		}
+		else if(end == 1) {	//Decrease Row
+			p2Board[row - 1][col] = '5';
+			p2Board[row - 2][col] = '5';
+			p2Board[row - 3][col] = '5';
+			p2Board[row - 4][col] = '5';
+		}
+		else if(end == 2) {	//Increase Column
+			p2Board[row][col + 1] = '5';
+			p2Board[row][col + 2] = '5';
+			p2Board[row][col + 3] = '5';
+			p2Board[row][col + 4] = '5';
+		}
+		else if(end == 3) {	//Decrease Column
+			p2Board[row][col - 1] = '5';
+			p2Board[row][col - 2] = '5';
+			p2Board[row][col - 3] = '5';
+			p2Board[row][col - 4] = '5';
+		}
+		//End Five Ship Placement	------------------------------------------------
+	}
+	
+	public void playGame(){
+		
 	}
 }

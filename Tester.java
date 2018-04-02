@@ -7,10 +7,13 @@ public class Tester {
 
 		test.makeBoard();
 		//test.printEmptyBoard();
-		test.placeTwoSpotShip();
-		test.placeThreeSpotShip();
-		test.placeFourSpotShip();
-		test.placeFiveSpotShip();
+		//test.placeTwoSpotShip();
+		//test.placeThreeSpotShip();
+		//test.placeFourSpotShip();
+		//test.placeFiveSpotShip();
+		
+		test.computerPlayer();
+		test.printP2Board();
 		
 	}
 
